@@ -29,6 +29,8 @@ jobs:
         
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Replace pom file version
+      run: sed -i s@DB-REFRESH-DEVELOPMENT@$BUILD_VERSION@g pom.xml
 
     - name: Sync to S3
       run: aws s3 sync . s3://sla54321
