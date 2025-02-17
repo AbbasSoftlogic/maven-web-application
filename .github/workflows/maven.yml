@@ -32,7 +32,7 @@ jobs:
     - name: Display the branch name
       run: echo "Current Branch:${{ github.ref }}"
     - name: Output Run Number
-      run: echo ${{ github.run_number }}
+      run: echo "${{ github.run_number }}"
     - name: Replace pom file version
       run: sed -i s@0.0.1-SNAPSHOT@${{ github.ref }}@${{ github.run_number }}g pom.xml
    
