@@ -29,9 +29,11 @@ jobs:
         
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Display the branch name
+      run: echo "Current Branch:${{ github.ref }}"
     - name: Replace pom file version
-      run: sed -i s@0.0.1-SNAPSHOT@$BUILD_VERSION@g pom.xml
-
+      run: sed -i s@0.0.1-SNAPSHOT@$github.ref@g pom.xml
+   
     - name: Sync to S3
       run: aws s3 sync . s3://sla54321
 
